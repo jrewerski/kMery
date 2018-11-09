@@ -1,6 +1,5 @@
 from operator import itemgetter
 
-# z biblioteki operator pobierz funkcje itemgetter
 file0 = open("Wynik.txt", "w+")
 
 text1='''atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaacctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgaccacggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgacttgtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggattacgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttaggatagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaattgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaagatcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtttccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc'''
@@ -63,9 +62,3 @@ wygenerowanym DNA. Przy merze równym lub większym 12 nukleotydów znalezie
 file0.close()
 
 assert frequent_mers(text1, 2) == ['tt'], "blad napisania fukcji"
-
-print("Test dzialania funkcji")
-text = "aaaatatataatat"
-k0 = frequent_mers(text, 2)
-print(k0)
-print("Najczestszy k-mer powinien byc at, gdyz: a AT AT AT a AT AT")
