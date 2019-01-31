@@ -5,21 +5,21 @@ file0 = open("Wynik.txt", "w+")
 text1='''atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaacctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgaccacggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgacttgtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggattacgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttaggatagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaattgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaagatcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtttccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc'''
 
 def PATTERNCOUNT(Text, Pattern):
-    assert Text != "", "Nie ma nici DNA"
-    assert Pattern != "", "Brak k-mera do zliczenia"
+    assert Text != ""
+    assert Pattern != ""
     count = 0
     for i in range(len(Text) - len(Pattern)+1):
         if Text[i:i + len(Pattern)] == Pattern:
             count = count + 1
     #wyszukuje ilosc meru w danej sekwencji DNA
-    assert count > 0, "Blad funkcji"
-    assert count < len(Text), "K-mer nie moze byc wiecej razy w tescie niz jego dlugosc"
+    assert count > 0
+    assert count < len(Text)
     return count
 
 def frequent_mers(text, k):
-    assert text != "", "Nie ma z czego zliczac mery"
-    assert k > 1, "Mer musi być wiekszy od 1"
-    assert k < len(text), "Mer nie moze byc dluzszy od DNA"
+    assert text != ""
+    assert k > 1
+    assert k < len(text)
     frequent_mer = []
     slownik = {} 
     # slownik bedzie zawieral wszystkie mery i ich liczbe w sekwencji 
@@ -28,19 +28,12 @@ def frequent_mers(text, k):
         slownik[pattern] = PATTERNCOUNT(text, pattern)
         # zlicza ilosc dnaego meru w sekwencji i podstawia pod klucz
         # ktory jest tym merem 
-        assert slownik != "",  "brak merow i ich liczebnosci"
+        assert slownik != ""
     print(slownik)
     MaxCount = max(slownik.items(), key=itemgetter(1))[1]  
-    assert MaxCount > 0, "Blad napisania funkcji"
+    assert MaxCount > 0
     
     # Pobranie najwiekszej wartosci z slownika dzieje sie po wartosciach kluczy
-    # key=itemgetter(1) jest po to aby znalesc max po wartosciach kluczy 
-    # key=itemgetter(0) byłby po kluczach
-    # sam funkcja max zwraca klucz i jego wartosc  np {at : 9}
-    # max(x)[1] jest po to aby wziac warrtosc najwiekszego klucza,
-    # (w przykladzie 9)
-    # czyli liczbe najczestszych merow i wyszukac pozniej wszystkie klucze z ta wartoscia
-    
     for a, b in slownik.items():  # wyszukuje klucz z najwieksza wartoscia
         if MaxCount == b:
             frequent_mer.append(a) # dodaje klucz do listy
